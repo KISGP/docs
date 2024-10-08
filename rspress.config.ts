@@ -4,6 +4,7 @@ import { pluginFontOpenSans } from 'rspress-plugin-font-open-sans';
 
 import katex from 'rspress-plugin-katex';
 import supersub from 'rspress-plugin-supersub';
+import readingTime from 'rspress-plugin-reading-time';
 
 import getDirStructure from './getDirStructure.ts';
 
@@ -43,6 +44,10 @@ export default defineConfig({
 			strict: false
 		}),
 		// 支持上标与下标语法。
-		supersub()
+		supersub(),
+		// 计算预估阅读时间的函数
+		readingTime({
+      defaultLocale: 'zh-CN',
+    })
 	]
 });
