@@ -1,0 +1,19 @@
+{
+	"scripts": {
+		"dev": "rspress dev",
+		"build": "rspress build",
+		"preview": "rspress preview"
+	},
+	"devDependencies": {
+		"rspress": "^1.31.1",
+		"rspress-plugin-font-open-sans": "^1.0.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.6.2"
+	},
+	"dependencies": {
+		"@rspress/shared": "^1.31.1",
+		"remark-math": "^5.1.1",
+		"rspress-plugin-katex": "^0.3.0",
+		"rspress-plugin-supersub": "^0.3.0"
+	}
+}
