@@ -9,8 +9,6 @@ import readingTime from 'rspress-plugin-reading-time';
 import getDirStructure from './getDirStructure.ts';
 
 export default defineConfig({
-	// 部署基础路径
-	base: '/docs/',
 	// 文档根目录
 	root: 'docs',
 	route: {
