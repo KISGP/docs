@@ -9,7 +9,7 @@ export default function getDirStructure(dirPath: string, relativePath: string) {
 		const fullPath = path.join(dirPath, item);
 		const stat = fs.statSync(fullPath);
 
-		if (item === 'assets') continue;
+		if (item === 'assets' || item === 'public') continue;
 
 		if (stat.isDirectory()) {
 			result.push({

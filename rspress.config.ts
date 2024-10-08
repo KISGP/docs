@@ -9,6 +9,10 @@ import readingTime from 'rspress-plugin-reading-time';
 import getDirStructure from './getDirStructure.ts';
 
 export default defineConfig({
+	title: 'KIS Docs',
+	description: '笔记',
+	icon: '/favicon.ico',
+	logo: '/favicon.png',
 	// 文档根目录
 	root: 'docs',
 	route: {
