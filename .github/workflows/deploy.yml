@@ -25,8 +25,8 @@ jobs:
         with:
           fetch-depth: 0 # Not needed if lastUpdated is not enabled
       # - uses: npm/action-setup@v3 # pnpm is optional but recommended, you can also use npm / yarn
-        with:
-          version: 8
+        # with:
+         #  version: 8
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
