@@ -13,6 +13,7 @@ export default defineConfig({
 	description: '笔记',
 	icon: '/favicon.ico',
 	logo: '/favicon.png',
+	logoText: 'KIS Docs',
 	// 文档根目录
 	root: 'docs',
 	route: {
@@ -31,7 +32,7 @@ export default defineConfig({
 		sidebar: {
 			'/': [
 				{
-					text: 'Docs',
+					text: '首页',
 					link: 'index'
 				},
 				...getDirStructure(join(__dirname, 'docs'), '')
