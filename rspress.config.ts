@@ -1,12 +1,13 @@
 import { join } from 'path';
+import { readdirSync, statSync } from 'fs';
 import { defineConfig } from 'rspress/config';
 import { pluginFontOpenSans } from 'rspress-plugin-font-open-sans';
 
 import katex from 'rspress-plugin-katex';
 import supersub from 'rspress-plugin-supersub';
+import ga from 'rspress-plugin-google-analytics';
 import readingTime from 'rspress-plugin-reading-time';
-
-import getDirStructure from './getDirStructure.ts';
+import mark from './plugin/rspress-plugin-mark';
 
 export default defineConfig({
 	title: 'KIS Docs',
@@ -50,7 +51,43 @@ export default defineConfig({
 		supersub(),
 		// 计算预估阅读时间的函数
 		readingTime({
-      defaultLocale: 'zh-CN',
-    })
+			defaultLocale: 'zh-CN'
+		}),
+		// 高亮标记
+		mark(),
+		// Google Analytics
+		ga({
+			id: 'G-6YNKEKDNQS'
+		})
 	]
 });
+
+function getDirStructure(dirPath: string, relativePath: string) {
+	const result: any[] = [];
+	const items = readdirSync(dirPath);
+
+	for (const item of items) {
+		const fullPath = join(dirPath, item);
+		const stat = statSync(fullPath);
+
+		if (item === 'assets' || item === 'public') continue;
+
+		if (stat.isDirectory()) {
+			result.push({
+				text: item,
+				collapsed: true,
+				items: getDirStructure(fullPath, join(relativePath, item))
+			});
+		} else if (item.includes('.md') && item !== 'index.md') {
+			const index = parseInt(item.split('_')[0]);
+			const link = `${relativePath}/${item}`.replace(/\\/g, '/').replace('.md', '');
+			if (index) {
+				result[index] = link;
+			} else {
+				result.push(link);
+			}
+		}
+	}
+
+	return result.filter(item => Boolean(item));
+}

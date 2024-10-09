@@ -22,7 +22,7 @@ $$
 
 ## 解决方法
 
-### 方法 1：降低 remark-math 版本
+### 方法 1：降低 remark-math 版本，重写插件
 
 1. 手动安装低版本`remark-math`
 
