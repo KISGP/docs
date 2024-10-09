@@ -20,10 +20,6 @@ export default defineConfig({
 	route: {
 		include: ['docs/**/*.md']
 	},
-	// 图片放大
-	mediumZoom: {
-		selector: '.rspress-doc img'
-	},
 	themeConfig: {
 		outlineTitle: '目录',
 		lastUpdated: true,
@@ -38,7 +34,14 @@ export default defineConfig({
 				},
 				...getDirStructure(join(__dirname, 'docs'), '')
 			]
-		}
+		},
+		socialLinks: [
+      {
+        icon: "github",
+        mode: "link",
+        content: "https://github.com/KISGP",
+      },
+    ],
 	},
 	plugins: [
 		// 使用 Open Sans 字体
