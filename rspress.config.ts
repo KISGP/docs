@@ -36,12 +36,12 @@ export default defineConfig({
 			]
 		},
 		socialLinks: [
-      {
-        icon: "github",
-        mode: "link",
-        content: "https://github.com/KISGP",
-      },
-    ],
+			{
+				icon: 'github',
+				mode: 'link',
+				content: 'https://github.com/KISGP'
+			}
+		]
 	},
 	plugins: [
 		// 使用 Open Sans 字体
@@ -75,14 +75,22 @@ function getDirStructure(dirPath: string, relativePath: string) {
 
 		if (item === 'assets' || item === 'public') continue;
 
+		const index = parseInt(item.split('_')[0]);
 		if (stat.isDirectory()) {
-			result.push({
-				text: item,
-				collapsed: true,
-				items: getDirStructure(fullPath, join(relativePath, item))
-			});
+			if (index) {
+				result[index] = {
+					text: item.split('_')[1],
+					collapsed: true,
+					items: getDirStructure(fullPath, join(relativePath, item))
+				};
+			} else {
+				result.push({
+					text: item.split('_')[1],
+					collapsed: true,
+					items: getDirStructure(fullPath, join(relativePath, item))
+				});
+			}
 		} else if (item.includes('.md') && item !== 'index.md') {
-			const index = parseInt(item.split('_')[0]);
 			const link = `${relativePath}/${item}`.replace(/\\/g, '/').replace('.md', '');
 			if (index) {
 				result[index] = link;
