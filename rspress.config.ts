@@ -85,7 +85,7 @@ function getDirStructure(dirPath: string, relativePath: string) {
 				};
 			} else {
 				result.push({
-					text: item.split('_')[1],
+					text: item,
 					collapsed: true,
 					items: getDirStructure(fullPath, join(relativePath, item))
 				});
