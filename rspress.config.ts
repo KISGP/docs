@@ -20,6 +20,7 @@ export default defineConfig({
 	route: {
 		include: ['docs/**/*.md']
 	},
+	globalStyles: join(__dirname, 'global.css'),
 	themeConfig: {
 		outlineTitle: '目录',
 		lastUpdated: true,

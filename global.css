@@ -1,0 +1,12 @@
+img{
+  border-radius: 5px;
+}
+
+@media print{
+  .rspress-sidebar-menu{
+    display: none;
+  }
+  .navContainer_f6cde.rspress-nav.px-6{
+    display: none;
+  }
+}
