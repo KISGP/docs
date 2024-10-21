@@ -18,12 +18,15 @@ export default defineConfig({
 	// 文档根目录
 	root: 'docs',
 	route: {
-		include: ['docs/**/*.md']
+		include: ['docs/**/*.md'],
+		exclude: ['components/**/*']
 	},
 	globalStyles: join(__dirname, 'global.css'),
+	globalUIComponents: [join(__dirname, 'components', 'ZenMode.tsx')],
 	themeConfig: {
 		outlineTitle: '目录',
 		lastUpdated: true,
+		hideNavbar: 'auto',
 		enableScrollToTop: true,
 		enableContentAnimation: true,
 		enableAppearanceAnimation: true,
@@ -65,7 +68,6 @@ export default defineConfig({
 		})
 	]
 });
-
 function getDirStructure(dirPath: string, relativePath: string) {
 	const result: any[] = [];
 	const items = readdirSync(dirPath);
@@ -92,7 +94,7 @@ function getDirStructure(dirPath: string, relativePath: string) {
 				});
 			}
 		} else if (item.includes('.md') && item !== 'index.md') {
-			const link = `${relativePath}/${item}`.replace(/\\/g, '/').replace('.md', '');
+			const link = `${relativePath}/${item}`.replace(/\\/g, '/').split('.')[0];
 			if (index) {
 				result[index] = link;
 			} else {
